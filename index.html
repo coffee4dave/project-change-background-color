@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: purple;
+            color: white;
+        }
+
+        button {
+            border: solid black 2px;
+            color: white;
+            background-color: rgba(26, 26, 26, 0.8);
+            height: 2rem;
+            width: 7rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(26, 26, 26, 0.3);
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .centered {
+            display: inline-block;
+            position: relative;
+            top: 0;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin-bottom: 1rem;
+
+        }
+    </style>
+
+
+    <title>Change Background Color Project</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="centered">
+            <button id="click-button">Click Me!</button>
+        </div>
+        <br>
+        <div class="centered">
+            <span id="color"></span>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            let bod = document.getElementsByTagName('body')[0];
+            let compStyle = window.getComputedStyle(bod);
+            let bgColor = compStyle.backgroundColor;
+            console.log("Page loaded.");
+            console.log(bgColor);
+            document.getElementById("color").textContent = "Color: " + bgColor;
+        });
+
+        document.getElementById("click-button").addEventListener("click", (e) => {
+            document.body.style.backgroundColor = newcolor();
+            document.getElementById("color").textContent = "Color: " + document.body.style.backgroundColor;
+
+        });
+
+        function newcolor() {
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+
+            return (`rgb(${r},${g},${b})`);
+        }
+    </script>
+
+
+</body>
+
+</html>
